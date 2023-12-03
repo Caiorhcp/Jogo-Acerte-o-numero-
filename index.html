@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da adivinhação</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body> 
+    <div class="container">
+            <div class="header">
+            <h2>Acerte o número!</h2>
+        </div>
+        <label for="numero">Digite um número: </label>
+        <input type="text" id="numero" required>
+        <button id="button">Conferir!</button>
+    </div>
+    <div class="header">
+    <h2>Chances Restantes!</h2>
+    </div>
+    <div class="container2">
+    <p id="pontuacao">10</p>
+    </div>
+    <script>
+        alert("Escolha numeros entre 0 a 10, boa sorte!")
+        var button = document.getElementById("button");
+        var pontuacaoElement = document.getElementById("pontuacao");
+        
+        var valor = Math.floor(Math.random() * 10);
+        console.log(valor);
+
+        button.addEventListener('click', function() {
+        let input = document.getElementById("numero").value;
+        let pontuacao = parseFloat(pontuacaoElement.textContent);
+    
+        if (input == valor) {
+            alert("Parabéns você acertou!");
+            document.getElementById("button").disabled = true;
+        } else if (input > valor) {
+            pontuacao = pontuacao - 1;
+            pontuacaoElement.textContent = pontuacao.toString();
+            alert("Número é menor");
+        } else if (input < valor) {
+            pontuacao = pontuacao - 1;
+            pontuacaoElement.textContent = pontuacao.toString();
+            alert("Número é maior");
+        }
+    
+        if (pontuacao == 0) {
+            document.getElementById("button").disabled = true;
+            alert("Acabou seus pontos! Perdeu!!!")
+        }
+    });
+
+    
+    
+    </script>
+</body>
+</html>
